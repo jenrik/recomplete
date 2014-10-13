@@ -1,0 +1,23 @@
+{
+  "name": "recomplete",
+  "version": "1.0.0",
+  "description": "A twitter bot that retweet people who tweet about there redirection campaign completions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "cloudnode@git.cloudno.de:/git/jenrik/1889-3e6e4eafc2d6e4e38977d6d940a2c3ec.git"
+  },
+  "keywords": [
+    "twitter",
+    "bot",
+    "redirection"
+  ],
+  "author": "Jacob Jenner Rasmussen <jacob@jener.dk>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "twitter": "~0.2.12"
+  }
+}
