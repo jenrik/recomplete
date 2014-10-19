@@ -9,12 +9,23 @@ var twit = new twitter({
 
 var regex = "I completed the campaign \".*?\" by @\\S*? in @redirectiongame";
 
-twit.stream("user", { track: "@redirectiongame" }, function(stream) {
-	stream.on("data", function(data) {
-		if (data.text !== undefined) {
-			if (data.text.match(regex) !== null) {
-				twit.post("/statuses/retweet/" + data["id_str"] + ".json", function() {});
+function startStream() {
+	twit.stream("user", { track: "@redirectiongame" }, function(stream) {
+		stream.on("data", function(data) {
+			console.log("test");
+			if (data.text !== undefined) {
+				if (data.text.match(regex) !== null) {
+					console.log("match");
+					twit.post("/statuses/retweet/" + data["id_str"] + ".json", function() {});
+				}
 			}
-		}
+		});
+
+		stream.on("end", function() {
+			console.log("Reconnecting to Twitter streaming api");
+			startStream();
+		});
 	});
-});
+}
+
+startStream();
